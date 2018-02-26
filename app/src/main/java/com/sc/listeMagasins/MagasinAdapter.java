@@ -1,0 +1,91 @@
+package com.sc.listeMagasins;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+
+/**
+ * Created by nasredine on 25/02/2018.
+ */
+
+class MagasinAdapter extends BaseAdapter {
+
+
+    private final MainActivity mainActivityContext;
+    private ArrayList<Magasin> magasins;
+
+    public MagasinAdapter(MainActivity mainActivityContext, ArrayList<Magasin> magasins) {
+        this.magasins = magasins;
+        this.mainActivityContext = mainActivityContext;
+    }
+
+
+
+    @Override
+    public int getCount() {
+        return magasins.size();
+    }
+
+    @Override
+    public Object getItem(int arg0) {
+        return magasins.get(arg0);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        // on crée l'élément graphique qui affiche les éléments de la liste
+        View itemView = convertView;
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) mainActivityContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            itemView = inflater.inflate(R.layout.magasin_item, null);
+        }
+        // On fait un lien entre chaque composant d'un élément de la liste
+        TextView nom = (TextView) itemView.findViewById(R.id.nom);
+        TextView description = (TextView) itemView.findViewById(R.id.adresse);
+        ImageView logo = (ImageView) itemView.findViewById(R.id.logo);
+
+        // ajouter la valeur conerant le nom du planète
+        nom.setText(magasins.get(position).getNom());
+        description.setText(magasins.get(position).getAdresse());
+        //logo.setImageURI(new URImagasins.get(position).getLogo());
+        Picasso.with(mainActivityContext).load(magasins.get(position).getLogo())
+                .into(logo, new com.squareup.picasso.Callback(){
+                    @Override
+                    public void onSuccess(){
+                        Toast.makeText(mainActivityContext, "success Loading img", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(){
+                        Toast.makeText(mainActivityContext, "ERROR Loading img", Toast.LENGTH_SHORT).show();
+                    }
+
+                });
+
+
+
+        return itemView;
+    }
+}
+
+
+

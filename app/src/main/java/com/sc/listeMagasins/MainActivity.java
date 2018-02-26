@@ -36,11 +36,12 @@ public class MainActivity extends AppCompatActivity {
         listeMagasinView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Un exemple pour récupérer liberllé d'un produit
+                //TODO: à faire ce traitement pour pour l'affichage des achat en groupe
                 ArrayList<AchatGroupe> achatGroupes = Magasin.getAllAchatGroupe(1);
                 AchatGroupe achatGroupe = achatGroupes.get(0);
                 String libelle =  achatGroupe.getPromotion().getProduit().getLibelle();
-                Toast.makeText(MainActivity.this, libelle + "TODO: ouvrire l'activité qui " +
-                        "affiche les promos du magasin", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"libelle d'un produit:"+ libelle , Toast.LENGTH_SHORT).show();
 
             }
         });

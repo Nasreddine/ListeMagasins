@@ -63,10 +63,11 @@ class MagasinAdapter extends BaseAdapter {
         TextView adresse = (TextView) itemView.findViewById(R.id.adresse);
         ImageView logo = (ImageView) itemView.findViewById(R.id.logo);
 
-        // attribuer le nom, des du magasin
+        // attribuer les valeurs de nom,adresse du magasin
         nom.setText(magasins.get(position).getNom());
         adresse.setText(magasins.get(position).getAdresse());
-        //logo.setImageURI(new URImagasins.get(position).getLogo());
+
+        // On utilise la bibliothèque Picasso pour pouvoir charger le logo du magasin à travers un lien URI
         Picasso.with(mainActivityContext).load(magasins.get(position).getLogo())
                 .into(logo, new com.squareup.picasso.Callback(){
                     @Override

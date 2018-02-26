@@ -60,12 +60,12 @@ class MagasinAdapter extends BaseAdapter {
         }
         // On fait un lien entre chaque composant d'un élément de la liste
         TextView nom = (TextView) itemView.findViewById(R.id.nom);
-        TextView description = (TextView) itemView.findViewById(R.id.adresse);
+        TextView adresse = (TextView) itemView.findViewById(R.id.adresse);
         ImageView logo = (ImageView) itemView.findViewById(R.id.logo);
 
-        // ajouter la valeur conerant le nom du planète
+        // attribuer le nom, des du magasin
         nom.setText(magasins.get(position).getNom());
-        description.setText(magasins.get(position).getAdresse());
+        adresse.setText(magasins.get(position).getAdresse());
         //logo.setImageURI(new URImagasins.get(position).getLogo());
         Picasso.with(mainActivityContext).load(magasins.get(position).getLogo())
                 .into(logo, new com.squareup.picasso.Callback(){

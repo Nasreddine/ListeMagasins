@@ -36,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
         listeMagasinView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Toast.makeText(MainActivity.this, "TODO: ouvrire l'activité qui " +
+                ArrayList<AchatGroupe> achatGroupes = Magasin.getAllAchatGroupe(1);
+                AchatGroupe achatGroupe = achatGroupes.get(0);
+                String libelle =  achatGroupe.getPromotion().getProduit().getLibelle();
+                Toast.makeText(MainActivity.this, libelle + "TODO: ouvrire l'activité qui " +
                         "affiche les promos du magasin", Toast.LENGTH_SHORT).show();
 
             }
